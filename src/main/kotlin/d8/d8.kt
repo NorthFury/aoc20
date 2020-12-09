@@ -8,15 +8,18 @@ fun main() {
 
     executeUntilLoopOrEnd(instructions).let(::println)
 
-    (0..instructions.lastIndex).find { i -> isItFixed(instructions, i) }?.let { brokenIndex ->
-        val (operation, value) = instructions[brokenIndex]
-        val changedOperation = if (operation == "jmp") "nop" else "jmp"
-        val fixedInstructions = instructions.subList(0, brokenIndex) +
-                listOf(changedOperation to value) +
-                instructions.subList(brokenIndex + 1, instructions.size)
+    (0..instructions.lastIndex)
+        .filter { instructions[it].first in setOf("jmp", "nop") }
+        .find { i -> isItFixed(instructions, i) }
+        ?.let { brokenIndex ->
+            val (operation, value) = instructions[brokenIndex]
+            val changedOperation = if (operation == "jmp") "nop" else "jmp"
+            val fixedInstructions = instructions.subList(0, brokenIndex) +
+                    listOf(changedOperation to value) +
+                    instructions.subList(brokenIndex + 1, instructions.size)
 
-        executeUntilLoopOrEnd(fixedInstructions).let(::println)
-    }
+            executeUntilLoopOrEnd(fixedInstructions).let(::println)
+        }
 }
 
 private fun executeUntilLoopOrEnd(instructions: List<Pair<String, Int>>): Int {
