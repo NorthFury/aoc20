@@ -1,9 +1,9 @@
-package d9
+package d09
 
 import java.io.File
 
 fun main() {
-    val values = File("input/d9.input").readLines()
+    val values = File("input/d09.input").readLines()
         .filter(String::isNotBlank)
         .mapNotNull(String::toIntOrNull)
 

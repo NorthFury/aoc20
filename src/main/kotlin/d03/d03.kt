@@ -1,9 +1,9 @@
-package d3
+package d03
 
 import java.io.File
 
 fun main() {
-    val lines = File("input/d3.input").readLines().filter(String::isNotEmpty)
+    val lines = File("input/d03.input").readLines().filter(String::isNotEmpty)
 
     val angles = listOf(1 to 1, 3 to 1, 5 to 1, 7 to 1, 1 to 2)
 

@@ -1,9 +1,9 @@
-package d7
+package d07
 
 import java.io.File
 
 fun main() {
-    val ruleLines = File("input/d7.input").readLines().filter(String::isNotBlank)
+    val ruleLines = File("input/d07.input").readLines().filter(String::isNotBlank)
 
     val containerPattern = Regex("""\w+ \w+""")
     val bagsPattern = Regex("""(\d+) (\w+ \w+) bags?""")

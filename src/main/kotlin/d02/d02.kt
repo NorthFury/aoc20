@@ -1,10 +1,10 @@
-package d2
+package d02
 
 import java.io.File
 
 fun main() {
     val regex = Regex("""(\d+)-(\d+) ([a-z]): ([a-z]+)""")
-    val entries = File("input/d2.input").readLines()
+    val entries = File("input/d02.input").readLines()
         .filter { it.isNotBlank() }
         .mapNotNull(regex::find)
         .map {

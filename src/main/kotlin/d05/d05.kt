@@ -1,9 +1,9 @@
-package d5
+package d05
 
 import java.io.File
 
 fun main() {
-    val lines = File("input/d5.input").readLines().filter(String::isNotBlank)
+    val lines = File("input/d05.input").readLines().filter(String::isNotBlank)
 
     lines.asSequence()
         .map { it.take(7).decodeRow() * 8 + it.drop(7).decodeColumn() }

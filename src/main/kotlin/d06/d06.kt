@@ -1,9 +1,9 @@
-package d6
+package d06
 
 import java.io.File
 
 fun main() {
-    val lines = File("input/d6.input").readLines()
+    val lines = File("input/d06.input").readLines()
     val splitIndexes = listOf(-1) +
             lines.mapIndexedNotNull { i, s -> if (s.isBlank()) i else null } +
             listOf(lines.size)

@@ -1,9 +1,9 @@
-package d8
+package d08
 
 import java.io.File
 
 fun main() {
-    val instructions = File("input/d8.input").readLines().filter(String::isNotBlank)
+    val instructions = File("input/d08.input").readLines().filter(String::isNotBlank)
         .map { it.take(3) to it.drop(4).toInt() }
 
     executeUntilLoopOrEnd(instructions).let(::println)

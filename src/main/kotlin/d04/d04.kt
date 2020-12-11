@@ -1,11 +1,11 @@
-package d4
+package d04
 
 import java.io.File
 
 fun main() {
     val propertyPattern = Regex("""(\w+):([#\w]+)""")
 
-    val lines = File("input/d4.input").readLines()
+    val lines = File("input/d04.input").readLines()
     val splitIndexes = listOf(-1) +
             lines.mapIndexedNotNull { i, s -> if (s.isBlank()) i else null } +
             listOf(lines.size)

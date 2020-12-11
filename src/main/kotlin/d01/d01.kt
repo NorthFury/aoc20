@@ -1,9 +1,9 @@
-package d1
+package d01
 
 import java.io.File
 
 fun main() {
-    val values = File("input/d1.input").readLines()
+    val values = File("input/d01.input").readLines()
         .filter { it.isNotBlank() }
         .mapNotNull { it.toIntOrNull() }
         .sorted()
