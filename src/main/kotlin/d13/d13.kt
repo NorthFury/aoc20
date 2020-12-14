@@ -9,7 +9,13 @@ fun main() {
 
     part1(busses, earliestTimestamp)
 
-    part2TooSlow(busses).let(::println)
+    // too slow
+    // part2TooSlow(busses).let(::println)
+
+    // something is still wrong
+    busses.mapIndexedNotNull { index, it -> it?.let { index.toLong() to it.toLong() } }
+        .let(::computeChineseRemainder)
+        .let(::println)
 }
 
 private fun part1(busses: List<Int?>, earliestTimestamp: Int) {
@@ -27,16 +33,25 @@ private fun part2TooSlow(busses: List<Int?>): Long {
     val referenceBus = busses.filterNotNull().maxOrNull() ?: throw Exception("up")
     val referenceBusIndex = busses.indexOf(referenceBus)
 
-    var timestampPrint = 1000000000000L
-    var iteration = 155365474341L // 176360808711 checkpoint
+    var iteration = 0
     while (true) {
         val timestamp = iteration * referenceBus.toLong() - referenceBusIndex
         val isCorrect = indexedBusses.all { (i, it) -> (timestamp + i) % it == 0L }
         if (isCorrect) return timestamp
         iteration++
-        if (timestampPrint < timestamp) {
-            timestampPrint += 100000000000L
-            println("$timestampPrint $iteration")
-        }
     }
+}
+
+// Chinese Remainder Theorem
+private fun computeChineseRemainder(values: List<Pair<Long, Long>>): Long =
+    values.sortedByDescending { it.second }.reduce { (a1, n1), (a2, n2) ->
+        computeForTwo(a1, n1, a2, n2) to n1 * n2
+    }.first
+
+private fun computeForTwo(a1: Long, n1: Long, a2: Long, n2: Long): Long {
+    var acc = a1
+    while (acc % n2 != a2) {
+        acc += n1
+    }
+    return acc
 }
