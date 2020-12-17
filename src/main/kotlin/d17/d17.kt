@@ -44,11 +44,11 @@ private data class Cube(
     val z: Int,
 ) {
     fun getNeighbours(): Set<Cube> {
-        val values = listOf(-1, 0, 1)
-        return values
+        val deltas = listOf(-1, 0, 1)
+        return deltas
             .flatMap { i ->
-                values.flatMap { j ->
-                    values.map { k ->
+                deltas.flatMap { j ->
+                    deltas.map { k ->
                         Cube(x + i, y + j, z + k)
                     }
                 }
@@ -94,12 +94,12 @@ private data class HyperCube(
     val w: Int
 ) {
     fun getNeighbours(): Set<HyperCube> {
-        val values = listOf(-1, 0, 1)
-        return values
+        val deltas = listOf(-1, 0, 1)
+        return deltas
             .flatMap { i ->
-                values.flatMap { j ->
-                    values.flatMap { k ->
-                        values.map { l ->
+                deltas.flatMap { j ->
+                    deltas.flatMap { k ->
+                        deltas.map { l ->
                             HyperCube(x + i, y + j, z + k, w + l)
                         }
                     }
