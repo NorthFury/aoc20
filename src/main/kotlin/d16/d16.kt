@@ -30,7 +30,7 @@ fun main() {
         .sortedBy { it.second.size }
         .fold(emptyList<Pair<Rule, Int>>() to emptySet<Int>()) { (accRules, accPositions), (rule, positions) ->
             val matchingPosition = (positions - accPositions).first()
-            (accRules + (rule to matchingPosition)) to positions
+            (accRules + (rule to matchingPosition)) to accPositions + matchingPosition
         }
         .first
 
