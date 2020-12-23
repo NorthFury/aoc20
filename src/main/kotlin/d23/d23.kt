@@ -16,9 +16,9 @@ fun main() {
     val part2Values = inputValues + (inputMax + 1).rangeTo(1_000_000).toList()
     val part2Node = Node.fromList(part2Values)
     shuffle(part2Node, 10_000_000, inputMin, 1_000_000)
-    part2Node.find(1)?.let {
-        println(it.next().value.toLong() * it.next().next().value.toLong())
-    }
+    part2Node.find(1)
+        ?.let { it.next().value.toLong() * it.next().next().value.toLong() }
+        ?.let(::println)
 }
 
 private fun shuffle(start: Node, n: Int, min: Int, max: Int) {
