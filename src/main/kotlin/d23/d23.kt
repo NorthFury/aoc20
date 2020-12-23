@@ -3,7 +3,7 @@ package d23
 import java.io.File
 
 fun main() {
-    val inputValues = File("input/d23.input").readText().trim().map { (it - '0') }
+    val inputValues = File("input/d23.input").readText().trim().map { it - '0' }
     val part1Node = Node.fromList(inputValues)
 
     val inputMin = inputValues.minOrNull() ?: throw Exception("up")
